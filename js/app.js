@@ -129,12 +129,12 @@ class App {
 
     ageFilter(maxAge) {
         document.querySelector('.label-range').innerHTML = `Max age: ${maxAge}`;
-        if (this.filterStates.age < + maxAge) {
-            this.filterStates.age = + maxAge;
+        if (this.filterStates.age < +maxAge) {
+            this.filterStates.age = +maxAge;
             this.restoreFromFilter();
         } else {
-            this.filterStates.age = + maxAge;
-            this.cards = this.cards.filter(person => person.age <= + maxAge);
+            this.filterStates.age = +maxAge;
+            this.cards = this.cards.filter(person => person.age <= +maxAge);
         }
     }
 
@@ -210,7 +210,7 @@ class App {
 
     toggleFilters() {
         const app = this;
-        filterSet.addEventListener('input', function(event) {
+        filterSet.addEventListener('input', function (event) {
             const target = event.target.closest('input');
             if (!target) {
                 return
@@ -236,7 +236,7 @@ class App {
             app.displayPeople();
         });
 
-        filterSet.addEventListener('click', function({target}) {
+        filterSet.addEventListener('click', function ({target}) {
             const resetAppButton = target.closest('input.button-reset');
             if (!resetAppButton) {
                 return
@@ -249,7 +249,7 @@ class App {
 
     togglePages() {
         const app = this;
-        pages.addEventListener('click', function({target}) {
+        pages.addEventListener('click', function ({target}) {
             const pageToggler = target.closest('button.button-page');
             if (!pageToggler) {
                 return
@@ -282,7 +282,7 @@ function removeOverlay() {
 }
 
 function createPeopleList(data) {
-    data.forEach(function (person){
+    data.forEach(function (person) {
         const {name, dob: {age}, gender, location: {country, city}, email, phone, cell, picture, registered} = person;
         const newPerson = new Person(name, age, gender, country, city, email, phone, cell, picture, registered);
         newPerson.cardTemplate();
